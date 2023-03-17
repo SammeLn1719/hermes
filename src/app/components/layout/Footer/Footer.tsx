@@ -6,7 +6,14 @@ import style from './../Layout.module.scss';
 
 const Footer:React.FunctionComponent = () => {
   return<>
-      <section className={style.wrapperFooter}></section>
+      <section className={style.wrapperFooter}>
+        <div>
+
+        </div>
+        <div>
+
+        </div>
+      </section>
   </>
 }
 
