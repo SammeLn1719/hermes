@@ -1,15 +1,13 @@
 import React from 'react';
-import TopBar from './app/components/layout/Header/TopBar';
+
 import Layout from './app/components/layout/Layout';
+import Auth from './app/services/Auth';
 
 function App() {
   return (
     <Layout>
       <div>
-        привет я живой ывафвыафыував
-
-        ывьапзлыхвза
-
+          <Auth/>
       </div>
     </Layout>
   );
