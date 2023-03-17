@@ -58,7 +58,7 @@ const Auth = () => {
             <input onChange={e => emailHandler(e)} value={email} onBlur={e => blurHandler(e)} name="email" type="text" placeholder="Enter your email..."/>
             {(passwordDirty && passwordError) && <div style={{color:'red'}}>{passwordError}</div>}
             <input onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} name="password" type="password" placeholder="Enter your password..."/>
-            <button disabled={!formValid}>Регистрация</button>
+            <button disabled={!formValid} type="submit">Регистрация</button>
         </form>
     </>;
 }
