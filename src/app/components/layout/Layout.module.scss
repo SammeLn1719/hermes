@@ -3,8 +3,10 @@
     padding: 0;
     margin: 0;
     list-style: none;
+    text-decoration: none;
     font-family: 'ubuntu', sans-serif;
 }
+
 @media( min-width: 360px){
     .logo{
         width: 4em;
@@ -44,7 +46,24 @@
     .wrapperFooter{
         width: 100vw;
         height: 50vh;
+        color: #FFF;
+        display: flex;
+        justify-content: center;
         background-color: rgb(0, 0, 0);
+    }
+    .FooterItem{
+        display: block;
+        width: 295px;
+        padding-top: 4em;
+    }
+    .FooterItem:last-child{
+        display: flex;
+        justify-content: end;
+    }
+    .FooterItemBot{
+        & img{
+            box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,0.2);
+        }
     }
 }
 

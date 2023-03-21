@@ -12,3 +12,35 @@
 h1{
     font-family: 'ubuntu', sans-serif; 
 }
+
+
+
+//catalog
+.wrapperFaceCatalog{
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.ProductType{
+    width: 33%;
+    height: auto;
+    margin: 2em auto;
+    & .itemIMG{
+      display: flex;
+      justify-content: center;
+    }
+    & img{
+        margin: 2em auto;
+    }
+    & h3{
+        text-align: center;
+    }
+    
+}
+.buttonCatalog{
+    width: 200px;
+    margin: 2em auto;
+    display: flex;
+    justify-content: center;
+  }
