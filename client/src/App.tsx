@@ -6,6 +6,7 @@ import Catalog from './app/components/ui/Catalog'
 import  Main  from './pages/Main';
 import  Notfoundpage  from './pages/Notfoundpage';
 import  Authorization  from './pages/Authorization'
+import Promotion from './app/components/ui/Promotion';
 
 
 
@@ -18,8 +19,12 @@ function App() {
           <Route path='/katalog' element={<Catalog/>}/>
           <Route path='/Authorization' element={<Authorization/>}/>
           <Route path='*' element={<Notfoundpage/>}/>
+
+          
+          
         </Routes>
       </section>
+      <section><Promotion/></section>  
     </Layout>
   );
 }
