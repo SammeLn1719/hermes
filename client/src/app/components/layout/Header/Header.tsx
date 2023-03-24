@@ -3,9 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import style from './../Layout.module.scss';
 import TopBar  from './TopBar';
 import itemImg from './../../../assets/image/look.jpg';
-
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css';
-
+import 'swiper/css/navigation';
 
 
 
@@ -19,11 +19,13 @@ const Header:React.FunctionComponent = () => {
             <Swiper
             spaceBetween={50}
             slidesPerView={1}
+            navigation={true}
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
             >
             <SwiperSlide>
               <div className={style.itemSlider}>
                 <img src={itemImg}/>
-                
+
               </div>
             </SwiperSlide>
             <SwiperSlide>

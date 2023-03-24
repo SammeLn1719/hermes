@@ -44,3 +44,21 @@ h1{
     display: flex;
     justify-content: center;
   }
+
+// Акции 
+
+.wrapperPromotion{
+    background: url('../image/spt1976.jpg');
+    background-attachment: fixed; 
+    &Border{
+        
+    }
+}
+.PromotionItemSlider{
+    margin: 4em auto;
+    padding: 4em;
+    width: 900px;
+    height: 200px;
+    border: red solid 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
