@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { FiArrowLeft,FiArrowRight } from 'react-icons/fi';
 import style from './../Layout.module.scss';
 import TopBar  from './TopBar';
 import itemImg from './../../../assets/image/look.jpg';
@@ -19,7 +20,10 @@ const Header:React.FunctionComponent = () => {
             <Swiper
             spaceBetween={50}
             slidesPerView={1}
-            navigation={true}
+            navigation={{
+              nextEl: ".button-next-slide",
+              prevEl: ".button-prev-slide",
+            }}
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             >
             <SwiperSlide>
@@ -38,7 +42,12 @@ const Header:React.FunctionComponent = () => {
                 3
             </div>
             </SwiperSlide>
-            ...
+            <div className="button-next-slide">
+              <FiArrowRight/>
+            </div>
+            <div className="button-prev-slide">
+              <FiArrowLeft/>
+            </div>
           </Swiper>
           </div>
     </section>
