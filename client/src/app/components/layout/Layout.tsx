@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import Footer from './Footer/Footer';
-import Header from './Header/Header';
 
-import style from './Layout.module.scss';
+import TopBar from './Header/TopBar';
+
+
 
 interface Layout{
   children: string | JSX.Element | JSX.Element[];
 }
 
-const Layout:FC<any> = ({children}) => <><Header/>{children}<Footer/></>
+const Layout:FC<any> = ({children}) => <><TopBar/>{children}<Footer/></>
 
 export default Layout;

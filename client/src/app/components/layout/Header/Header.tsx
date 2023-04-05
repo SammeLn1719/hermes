@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FiArrowLeft,FiArrowRight } from 'react-icons/fi';
 import style from './../Layout.module.scss';
-import TopBar  from './TopBar';
+
 import itemImg from './../../../assets/image/look.jpg';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css';
@@ -11,12 +11,7 @@ import 'swiper/css/navigation';
 
 
 const Header:React.FunctionComponent = () => {
-  return<>
-    <section>
-    <div>
-      <TopBar/>
-    </div>
-      <div>
+  return <section>
             <Swiper
             spaceBetween={50}
             slidesPerView={1}
@@ -49,9 +44,7 @@ const Header:React.FunctionComponent = () => {
               <FiArrowLeft/>
             </div>
           </Swiper>
-          </div>
     </section>
-  </>
 }
 
 export default Header;
