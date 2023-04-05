@@ -30,6 +30,7 @@ h1{
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 10em);
+    grid-auto-rows: 45px;
     gap: 2em;
 }
 .TypeBar{
@@ -43,7 +44,7 @@ h1{
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 1;
-   
+
     display: flex;
 
 }
