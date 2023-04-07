@@ -1,11 +1,9 @@
 import Auth from "../app/services/Auth";
-
+import style from "./../app/assets/styles/admin.module.scss"
 const Authorization = () => {
-    return <>
-    <div>
+    return <div className={style.wrapperAuthorization}>
         <Auth/>
-    </div>
-    </>;
+    </div>;
 }
 
 export default Authorization;

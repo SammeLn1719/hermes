@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import style from './../../assets/styles/standard.module.scss';
-import itemImg from './../../assets/image/look.jpg';
+
 
 import 'swiper/css';
 
