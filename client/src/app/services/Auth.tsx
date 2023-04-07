@@ -20,14 +20,7 @@ const Auth = observer(() => {
     const[formValid, setFormValid] = useState(false)
 
 
-    const location = useLocation()
-    const navigate = useNavigate()
-    const isLogin = location.pathname === LOGIN_ROUTER
-    console.log("====================================")
-    console.log(location)
-    console.log(navigate)
-    console.log(isLogin)
-    console.log("====================================")
+   
     useEffect(()=>{
         if(emailError || passwordError){
             setFormValid(false)
@@ -69,23 +62,33 @@ const Auth = observer(() => {
         }
     }
 
+    const location = useLocation()
+    const navigate = useNavigate()
+    const isLogin = location.pathname === LOGIN_ROUTER
+    console.log("====================================")
+    console.log(location)
+    console.log(navigate)
+    console.log(isLogin)
+    console.log("====================================")
     const click = async () =>{
         try{
             let data;
-            if(isLogin){
-                data = await login(email, password)
-            }else{
-                data = await registration(email, password)
-                console.log(Response)
-            }
+            // if(isLogin){
+            //     console.log(1)
+            //     data = await login(email, password)
+            // }else{
+            //     console.log(2)
+            //     data = await registration(email, password)
+            // }
+            console.log(3)
             user.setUser(data)
-            user.setIsAuth(data)
+            user.setIsAuth(true)
             navigate(CATALOG_ROUTE)
         }catch(e:any){
-            alert(e.response.data.massage)
+            console.log(4)
+            alert(e.response.data.message)
         }
     }
-
     return <form>
     <h1>{isLogin ? 'Авторизация' : 'Регистрация'}</h1>
     <p>Почта:</p>
