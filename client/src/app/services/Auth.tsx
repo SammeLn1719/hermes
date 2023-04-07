@@ -73,7 +73,6 @@ const Auth = observer(() => {
     const click = async () =>{
         try{
             let data;
-<<<<<<< HEAD
              if(isLogin){
                  console.log(1)
                  data = await login(email, password)
@@ -81,15 +80,6 @@ const Auth = observer(() => {
                  console.log(2)
                  data = await registration(email, password)
              }
-=======
-            // if(isLogin){
-            //     console.log(1)
-            //     data = await login(email, password)
-            // }else{
-            //     console.log(2)
-            //     data = await registration(email, password)
-            // }
->>>>>>> 632c72b3cc9e165c60c87b136f2bdbd6c417b965
             console.log(3)
             user.setUser(data)
             user.setIsAuth(true)
