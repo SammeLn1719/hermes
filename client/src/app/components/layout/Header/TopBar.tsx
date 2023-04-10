@@ -4,7 +4,7 @@ import style from './../Layout.module.scss';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Context } from '../../../../index';
 import { observer } from 'mobx-react-lite';
-import { LOGIN_ROUTER } from '../../utils/consts';
+import { ADMIN_ROUTER, LOGIN_ROUTER } from '../../utils/consts';
 
 
 const TopBar: FC = observer(() => {
@@ -20,11 +20,19 @@ const TopBar: FC = observer(() => {
           <nav>
             <Link to="/catalog">Каталог</Link>
             {user.isAuth ?
-              <button onClick={()=>user.setIsAuth(false)}>Профиль</button> 
-              : 
-              <button onClick={() => navigate(LOGIN_ROUTER)}>Вход</button> 
-            }
-            
+                    <div >
+                        <button onClick={() => navigate(ADMIN_ROUTER)}>
+                            Админ панель
+                        </button>
+                        <button onClick={() => logOut()}>
+                            Выйти
+                        </button>
+                    </div>
+                    :
+                    <div>
+                        <button onClick={() => navigate(LOGIN_ROUTER)}>Авторизация</button>
+                    </div>
+                }
           </nav>
         <div className={style.topBar_right}>+375(29)737-66-00</div>
     </section>
