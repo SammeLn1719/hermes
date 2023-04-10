@@ -1,6 +1,7 @@
 import Basket from "./app/components/screens/Basket"
+import ProductPage from "./app/components/screens/ProductPage"
 import Catalog from "./app/components/ui/Catalog"
-import { ADMIN_ROUTER, BASKET_ROUTE, CATALOG_ROUTE, DEVICE_ROUTER, LOGIN_ROUTER, REGISTRATION_ROUTER, SHOP_ROUTER } from "./app/components/utils/consts"
+import { ADMIN_ROUTER, BASKET_ROUTE, CATALOG_ROUTE, LOGIN_ROUTER, PRODUCT_ROUTER, REGISTRATION_ROUTER, SHOP_ROUTER } from "./app/components/utils/consts"
 import Admin from "./pages/Admin"
 import Authorization from "./pages/Authorization"
 import Main from "./pages/Main"
@@ -33,9 +34,9 @@ export const publicRouts = [
     {
         path: CATALOG_ROUTE,
         Component: Catalog
-    }
-    // {
-    //     path: DEVICE_ROUTER + '/:id',
-    //     Component: DevicePage
-    // },
+    },
+    {
+        path: PRODUCT_ROUTER + '/:id',
+        Component: ProductPage
+    },
 ]

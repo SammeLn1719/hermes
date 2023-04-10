@@ -19,7 +19,7 @@ const Auth = observer(() => {
     const[passwordError, setPasswordError] = useState('Пароль не может быть пустым')
     const[formValid, setFormValid] = useState(false)
 
-
+    console.log(user)
    
     useEffect(()=>{
         if(emailError || passwordError){
@@ -73,20 +73,16 @@ const Auth = observer(() => {
     const click = async () =>{
         try{
             let data;
-             if(isLogin){
-                 console.log(1)
+            if(isLogin){
                  data = await login(email, password)
-             }else{
-                 console.log(2)
+            }else{
                  data = await registration(email, password)
-             }
-            console.log(3)
+            }
             user.setUser(data)
             user.setIsAuth(true)
             navigate(CATALOG_ROUTE)
         }catch(e:any){
             console.log(4)
-            alert(e.response.data.message)
         }
     }
     return <form>
