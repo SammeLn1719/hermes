@@ -25,13 +25,19 @@ exports.signup = (req, res) => {
           }
         }).then(roles => {
           user.setRoles(roles).then(() => {
-            res.send({ message: "User was registered successfully!" });
+            var token = jwt.sign({ id: user.id }, config.secret, {
+              expiresIn: 86400 // 24 hours
+            });      
+            res.send(token);
           });
         });
       } else {
         // user role = 1
         user.setRoles([1]).then(() => {
-          res.send({ message: "User was registered successfully!" });
+          var token = jwt.sign({ id: user.id }, config.secret, {
+            expiresIn: 86400 // 24 hours
+          });      
+          res.send(token);
         });
       }
     })
