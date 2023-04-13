@@ -71,7 +71,8 @@ exports.signin = (req, res) => {
           message: "Invalid Password!"
         });
       }
-
+      
+  console.log(user)
       var token = JWT(user)
 
       var authorities = [];
@@ -94,10 +95,5 @@ exports.signin = (req, res) => {
 };
 
 exports.check = (req, res,next) => {
-  user.create({        
-    id: req.user.id,
-    username: req.user.email,
-    password: bcrypt.hashSync(req.user.password, 5)
-  })      
-  res.json(JWT(user))
+  res.send(JWT(req.user))
 };
