@@ -14,7 +14,16 @@ module.exports = (sequelize, Sequelize) => {
       },
       quantity: {
         type: Sequelize.INTEGER
-      }
+      },
+      manufacturer: {
+        type: Sequelize.STRING
+      },
+      amount_in_package:{
+        type: Sequelize.INTEGER
+      },
+      number_of_servings:{
+        type: Sequelize.INTEGER
+      },
     });
   
     return Product;
