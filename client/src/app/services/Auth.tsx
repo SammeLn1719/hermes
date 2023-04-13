@@ -85,8 +85,8 @@ const Auth = observer(() => {
             console.log(4)
         }
     }
-    return <form>
-    <h1>{isLogin ? 'Авторизация' : 'Регистрация'}</h1>
+    return <form className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring ring-2 ring-purple-600 lg:max-w-xl">
+    <h1 className="text-3xl font-semibold text-center underline uppercase ">{isLogin ? 'Авторизация' : 'Регистрация'}</h1>
     <p>Почта:</p>
     <p>{(emailDirty && emailError) && <div style={{color:'red'}}>{emailError}</div>}</p>
     <input onChange={e => emailHandler(e)} value={email} onBlur={e => blurHandler(e)} name="email" type="text" placeholder="Enter your email..."/>

@@ -1,4 +1,4 @@
-import Basket from "./app/components/screens/Basket"
+// import Basket from "./app/components/screens/Basket"
 import ProductPage from "./app/components/screens/ProductPage"
 import Catalog from "./app/components/ui/Catalog"
 import { ADMIN_ROUTER, BASKET_ROUTE, CATALOG_ROUTE, LOGIN_ROUTER, PRODUCT_ROUTER, REGISTRATION_ROUTER, SHOP_ROUTER } from "./app/components/utils/consts"
@@ -11,10 +11,10 @@ export const  authRouts = [
         path: ADMIN_ROUTER,
         Component: Admin
     },
-    {
-        path: BASKET_ROUTE,
-        Component: Basket
-    },
+    // {
+    //     path: BASKET_ROUTE,
+    //     Component: Basket
+    // },
 ]
 
 export const publicRouts = [
