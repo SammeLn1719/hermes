@@ -1,6 +1,9 @@
+import { AuthResponse } from './../types/response/AuthResponse';
+import  axios  from 'axios';
 import { IUser } from '../types/IUser';
 import { makeAutoObservable } from 'mobx';
 import AuthService from '../services/AuthService';
+import { API_URL } from '../http';
 export default class userStore{
     user = {} as IUser;
     isAuth = false;
@@ -45,6 +48,18 @@ export default class userStore{
             this.setAuth(false)
             this.setUser({} as IUser)
         }catch(e:any){
+            console.log(e.response?.data?.message);
+        }
+    }
+
+    async checkAuth(){
+        try{
+            const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {withCredentials:true})
+            console.log(response)
+            localStorage.setItem('token', response.data.accessToken);
+            this.setAuth(true)
+            this.setUser(response.data.user)
+        }catch (e:any){
             console.log(e.response?.data?.message);
         }
     }

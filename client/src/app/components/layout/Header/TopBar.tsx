@@ -1,6 +1,6 @@
 import React, { FC, useContext } from 'react';
 import logo from './../../../assets/image/logo.png';
-import style from './../Layout.module.scss';
+
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Context } from '../../../../index';
 import { observer } from 'mobx-react-lite';
@@ -9,14 +9,9 @@ import "./../../../../index.css"
 
 
 const TopBar: FC = observer(() => {
-  const {user} = useContext(Context)
+  const {useStore} = useContext(Context)
   const navigate = useNavigate()
 
-  const logOut = () =>{
-    user.setUser({})
-    user.setIsAuth(false)
-  }
-  {/*className={style.topBar}*/}
   return <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center">
@@ -57,13 +52,13 @@ const TopBar: FC = observer(() => {
                 <li>
                 <Link to="/about" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">О нас</Link>
                 </li>
-                    {user.isAuth ? 
+                    {useStore.isAuth ? 
                                 <div>
                                 <li>
                                     <button className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" onClick={() => navigate(ADMIN_ROUTER)}>Админ панель</button>
                                 </li>
                                 <li>
-                                    <button className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" onClick={() => logOut()}>Выйти</button>
+                                    <button className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" onClick={() => useStore.logout()}>Выйти</button>
                                 </li>
                                 </div>
                                 :
@@ -74,29 +69,7 @@ const TopBar: FC = observer(() => {
                 </ul>
             </div>
         </div>
-        </nav>
-
-       
-
-       {/*<NavLink className={style.topBar_left} to="/"><img className={style.logo} src={logo} alt="logo" /><h1>HERMES</h1></NavLink>
-          <nav>
-            <Link to="/catalog">Каталог</Link>
-            {user.isAuth ?
-                    <div >
-                        <button onClick={() => navigate(ADMIN_ROUTER)}>
-                            Админ панель
-                        </button>
-                        <button onClick={() => logOut()}>
-                            Выйти
-                        </button>
-                    </div>
-                    :
-                    <div>
-                        <button onClick={() => navigate(LOGIN_ROUTER)}>Авторизация</button>
-                    </div>
-                }
-          </nav>
-            <div className={style.topBar_right}>+375(29)737-66-00</div> */}
+    </nav>
 })
 
 export default TopBar;

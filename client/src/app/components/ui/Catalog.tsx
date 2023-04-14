@@ -10,11 +10,11 @@ import { Context } from "../../..";
 import { fetchBrands, fetchProduct, fetchTypes } from "../../../http/productAPI";
 
 const Catalog: FC = observer(() => {
-    const {product} = useContext(Context) 
+    const {store} = useContext(Context) 
     useEffect(()=>{
-        fetchTypes().then(data => product.setTypes(data))
-        fetchBrands().then(data => product.setBrands(data))
-        fetchProduct().then(data => product.setProducts(data.rows))
+        fetchTypes().then(data => store.setTypes(data))
+        fetchBrands().then(data => store.setBrands(data))
+        fetchProduct().then(data => store.setProducts(data.rows))
 
     }, [])
 

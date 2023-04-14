@@ -4,7 +4,8 @@ import React, { Component, FC, useContext, useEffect, useState } from 'react';
 import { Context } from '../../../index';
 import { NavLink,useNavigate, useLocation } from 'react-router-dom';
 import { LOGIN_ROUTER, REGISTRATION_ROUTER, SHOP_ROUTER,CATALOG_ROUTE } from "../../../utils/consts";
-import { login, registration } from "../../../http/userAPI";
+
+
 
 
 
@@ -69,21 +70,21 @@ const Auth:FC = observer(() => {
     console.log(navigate)
     console.log(isLogin)
     console.log("====================================")
-    // const click = async () =>{
-    //     try{
-    //         let data;
-    //         if(isLogin){
-    //              data = await login(email, password)
-    //         }else{
-    //              data = await registration(email, password)
-    //         }
-    //         user.setUser(data)
-    //         user.setIsAuth(true)
-    //         navigate(CATALOG_ROUTE, { replace: true })
-    //     }catch(e:any){
-    //         console.log(4)
-    //     }
-    // }
+    const click = async () =>{
+         try{
+             let data;
+             if(isLogin){
+                useStore.login(email, password)
+             }else{
+                useStore.registration(email, password)
+             }
+             //useStore.setUser()
+             useStore.setAuth(true)
+             navigate(CATALOG_ROUTE, { replace: true })
+         }catch(e:any){
+             console.log(4)
+        }
+    }
     return <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring ring-2 ring-blue-600 lg:max-w-xl"><form >
     <h1 className="text-3xl font-semibold text-blue-800 text-center underline uppercase ">{isLogin ? 'Авторизация' : 'Регистрация'}</h1>
     <p className="font-medium text-blue-800 hover:underline">Почта:</p>
@@ -93,7 +94,7 @@ const Auth:FC = observer(() => {
     {(passwordDirty && passwordError) && <div style={{color:'red'}}>{passwordError}</div>}
     <input className="block w-full px-4 py-2 mt-2 text-blue-800 bg-white border rounded-md focus:border-blue-700 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} name="password" type="password" placeholder="Enter your password..."/>
     <a href="#" className="text-xs text-blue-800 hover:underline">Забыть пароль?</a>  
-     <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-800 rounded-md hover:bg-blue-800 focus:outline-none focus:bg-blue-600" disabled={!formValid} onClick={() => useStore.registration(email, password)} type="submit">{isLogin ? 'Войти' : 'Регистрация'}</button> 
+     <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-800 rounded-md hover:bg-blue-800 focus:outline-none focus:bg-blue-600" disabled={!formValid} onClick={click} type="submit">{isLogin ? 'Войти' : 'Регистрация'}</button> 
 </form>
 <p className="mt-8 text-xs font-light text-center text-gray-700">
                     У вас нет аккаунта?{" "}
