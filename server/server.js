@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const errorHendler = require("./app/middleware/error.handling.middleware");
 
 const app = express();
 
@@ -10,12 +11,13 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(errorHendler);
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 const db = require("./app/models");
 const Role = db.role;
-db.sequelize.sync({force: true}).then(() => {
+db.sequelize.sync({force: false}).then(() => {
   console.log('Drop and Resync Db');
   initial();
 });
@@ -31,7 +33,7 @@ function initial() {
 }
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
-// set port, listen for requests
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
