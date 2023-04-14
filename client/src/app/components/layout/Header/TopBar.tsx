@@ -4,7 +4,7 @@ import style from './../Layout.module.scss';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Context } from '../../../../index';
 import { observer } from 'mobx-react-lite';
-import { ADMIN_ROUTER, LOGIN_ROUTER } from '../../utils/consts';
+import { ADMIN_ROUTER, LOGIN_ROUTER } from '../../../../utils/consts';
 import "./../../../../index.css"
 
 

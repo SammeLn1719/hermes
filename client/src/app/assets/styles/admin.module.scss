@@ -25,32 +25,7 @@ $vh:calc(100vh - 80px - 40vh);
     display: flex;
     justify-content: center; /*Центрирование по горизонтали*/
     align-items: center;
-    & form{
-        display: block;
-        padding: 25px;
-        width: 400px;
-        border: 2px solid #555555;
-        & p,h1{
-            padding-bottom: 10px;
-        }
-        & input{
-            padding: 10px;
-            font-size: 1em;
-            width: 94%;
-        }
-        & button{
-            padding: 10px;
-            font-size: 1em;
-            float: right;
-            margin-top: 10px;
-        }
-        & .noAkk{
-            padding: 10px 0 0 0;
-            font-size: 1em;
-            float: left;
-            margin-top: 10px;
-        }
-    }
+    
 }
 
 // TypeBar

@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { FC, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../../../index'
-import { PRODUCT_ROUTER } from '../utils/consts';
+import { PRODUCT_ROUTER } from '../../../utils/consts';
 
 import style from './../../assets/styles/standard.module.scss'
 import DeviceItem from './ProductItem';

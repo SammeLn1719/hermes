@@ -3,8 +3,20 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import UserStore from './app/hooks/UseStore';
 import Store from './app/hooks/Store';
+import userStore from './utils/userStore';
 
-export const Context = createContext<any | null>(null)
+//new token 
+interface State{
+  useStore:userStore,
+  store:Store,
+}
+const useStore = new userStore();
+const store = new Store()
+
+export const Context = createContext<State>({
+    useStore,
+    store,
+})
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,8 +24,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Context.Provider value={{
-      user:new UserStore(),
-      store: new Store()
+      useStore,
+      store
   }}>
         <App />
   </Context.Provider>

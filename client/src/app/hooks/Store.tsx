@@ -16,7 +16,7 @@ export default class Store{
         this._types = types
     }
     setBrands(brands:any){
-        this._brands = brands
+        this._brands = brands 
     }
     setProducts(products:any){
         this._products = products
