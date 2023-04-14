@@ -5,14 +5,15 @@ module.exports = function(app) {
   app.use(function(req, res, next) {
     res.header(
       "Access-Control-Allow-Headers",
-      "x-access-token, Origin, Content-Type, Accept"
+      "authorization, Origin, Content-Type, Accept"
     );
     next();
   });
 
-  app.get("/api/test/all", controller.allAccess);
+  app.get("/api/product/all", controller.all);
 
-  app.get(
+
+    /*
     "/api/test/user",
     [authJwt.verifyToken],
     controller.userBoard
@@ -21,5 +22,5 @@ module.exports = function(app) {
     "/api/test/admin",
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
-  );
+  );*/
 };

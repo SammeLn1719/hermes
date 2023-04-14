@@ -10,7 +10,7 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const { json } = require("sequelize");
 function JWT(user){  
-    var token = jwt.sign({ id: user.id,username: user.username,password:user.password }, config.secret, {
+    var token = jwt.sign({ id: user.id,email: user.email,password:user.password }, config.secret, {
       expiresIn: 86400 // 24 hours
     });  
     return token;
@@ -52,7 +52,7 @@ exports.signup = (req, res) => {
 exports.signin = (req, res) => {
   user.findOne({
     where: {
-      username: req.body.username
+      email: req.body.email
     }
   })
     .then(user => {
@@ -72,7 +72,6 @@ exports.signin = (req, res) => {
         });
       }
       
-  console.log(user)
       var token = JWT(user)
 
       var authorities = [];
