@@ -19,7 +19,7 @@ const Catalog: FC = observer(() => {
     }, [])
 
     return<div className={styleCatalog.wrapperFaceCatalog}>
-       //     <div className={styleCatalog.TypeBar}><TypeBar/></div>
+            <div className={styleCatalog.TypeBar}><TypeBar/></div>
             <div className={styleCatalog.BrandBar}><BrandBar/></div>
             <div className={styleCatalog.ProductList}><ProductList/></div>
         </div>

@@ -1,19 +1,28 @@
 const db = require("../models");
 const config = require("../config/auth.config");
-const User = db.user;
+
+const user = db.user;
 const Role = db.role;
 
 const Op = db.Sequelize.Op;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
+const { json } = require("sequelize");
+function JWT(user){  
+    var token = jwt.sign({ id: user.id,username: user.username,password:user.password }, config.secret, {
+      expiresIn: 86400 // 24 hours
+    });  
+    return token;
+}
+
 
 exports.signup = (req, res) => {
-  // Save User to Database
-  User.create({
+  // Save user to Database
+  user.create({
     username: req.body.username,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8)
+    password: bcrypt.hashSync(req.body.password, 5)
   })
     .then(user => {
       if (req.body.roles) {
@@ -24,26 +33,14 @@ exports.signup = (req, res) => {
             }
           }
         }).then(roles => {
-          user.setRoles(roles).then(() => {
-            var token = jwt.sign({ id: user.id }, config.secret, {
-              expiresIn: 86400 // 24 hours
-            });
-            res.status(200).send({              
-              accessToken: token
-            });
+          user.setRoles(roles).then(() => { 
+            res.send(JWT(user));
           });
         });
       } else {
         // user role = 1
-        user.setRoles([1]).then(() => {
-          user.setRoles(roles).then(() => {
-            var token = jwt.sign({ id: user.id }, config.secret, {
-              expiresIn: 86400 // 24 hours
-            });
-            res.status(200).send({              
-              accessToken: token
-            });
-          });
+        user.setRoles([1]).then(() => {      
+          res.send(JWT(user));
         });
       }
     })
@@ -53,14 +50,14 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
-  User.findOne({
+  user.findOne({
     where: {
       username: req.body.username
     }
   })
     .then(user => {
       if (!user) {
-        return res.status(404).send({ message: "User Not found." });
+        return res.status(404).send({ message: "user Not found." });
       }
 
       var passwordIsValid = bcrypt.compareSync(
@@ -74,10 +71,9 @@ exports.signin = (req, res) => {
           message: "Invalid Password!"
         });
       }
-
-      var token = jwt.sign({ id: user.id }, config.secret, {
-        expiresIn: 86400 // 24 hours
-      });
+      
+  console.log(user)
+      var token = JWT(user)
 
       var authorities = [];
       user.getRoles().then(roles => {
@@ -96,4 +92,8 @@ exports.signin = (req, res) => {
     .catch(err => {
       res.status(500).send({ message: err.message });
     });
+};
+
+exports.check = (req, res,next) => {
+  res.send(JWT(req.user))
 };
