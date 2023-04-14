@@ -1,8 +1,8 @@
 const { authJwt } = require("../middleware");
 const controller = require("../controllers/user.controller");
 
-module.exports = function(app) {
-  app.use(function(req, res, next) {
+module.exports = function (app) {
+  app.use(function (req, res, next) {
     res.header(
       "Access-Control-Allow-Headers",
       "authorization, Origin, Content-Type, Accept"
@@ -11,16 +11,18 @@ module.exports = function(app) {
   });
 
   app.get("/api/product/all", controller.all);
+  app.get("/api/product/brand", controller.brand);
+  app.get("/api/product/type", controller.type);
+  app.get("/api/product/name", controller.name);
 
-
-    /*
-    "/api/test/user",
-    [authJwt.verifyToken],
-    controller.userBoard
-  );
-  app.get(
-    "/api/test/admin",
-    [authJwt.verifyToken, authJwt.isAdmin],
-    controller.adminBoard
-  );*/
+  /*
+  "/api/test/user",
+  [authJwt.verifyToken],
+  controller.userBoard
+);
+app.get(
+  "/api/test/admin",
+  [authJwt.verifyToken, authJwt.isAdmin],
+  controller.adminBoard
+);*/
 };

@@ -70,17 +70,18 @@ const Auth = observer(() => {
     console.log(navigate)
     console.log(isLogin)
     console.log("====================================")
-    const click = async () =>{
+    const click =  () =>{
         try{
             let data;
             if(isLogin){
-                 data = await login(email, password)
+                 data =  login(email, password)
             }else{
-                 data = await registration(email, password)
+                 data =  registration(email, password)
             }
             user.setUser(data)
+            
+             navigate("/catalog",{replace: true})
             user.setIsAuth(true)
-            navigate(CATALOG_ROUTE)
         }catch(e:any){
             console.log(4)
         }

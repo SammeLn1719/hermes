@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
       quantity: {
         type: Sequelize.INTEGER
       },
-      manufacturer: {
+      brand: {
         type: Sequelize.STRING
       },
       amount_in_package:{
