@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 });
 const db = require("./app/models");
 const Role = db.role;
-
+const url = "https://drive.google.com/uc?export=view&id=";
 const Product = db.product; //для проверки
 const Compound = db.compound; //для проверки
 
@@ -24,14 +24,7 @@ db.sequelize.sync({force: true}).then(() => {
   initial();
 });
 function initial() {
-    Role.create({
-      id: 1,
-      name: "user"
-    });
-    Role.create({
-      id: 2,
-      name: "admin"
-    });
+    
     Product.create({
       id:1,
       name:"Печенье ProteinRex с высоким содержанием протеина «Кокосовое»",       
@@ -41,7 +34,8 @@ function initial() {
       quantity: 1,
       brand: "Rex",
       amount_in_package: 1,
-      number_of_servings: 1
+      number_of_servings: 1,      
+      img:url+"13wJPE_5NOB6JFLOkJKgoZIeTQ9GARrDQ"
     });
     Product.create({
       id:2,
@@ -52,7 +46,8 @@ function initial() {
       quantity: 1,
       brand: "Rex",
       amount_in_package: 1,
-      number_of_servings: 1
+      number_of_servings: 1,      
+      img:url+"1FRn87iMuMX1fvkvtPyEZqOiJK-s9Rz4u"
     });
     Product.create({
       id:3,
@@ -63,7 +58,8 @@ function initial() {
       quantity: 1,
       brand: "Rex",
       amount_in_package: 1,
-      number_of_servings: 1
+      number_of_servings: 1,      
+      img:url+"1bwuzbDOYRpXMmQYFjT_LNNdWRd_d95-2"
     });
     Product.create({
       id:4,
@@ -74,7 +70,8 @@ function initial() {
       quantity: 1,
       brand: "Rex",
       amount_in_package: 1,
-      number_of_servings: 1
+      number_of_servings: 1,      
+      img:url+"1V8uWbDS-4qRx15ChNxEIIHb3RZ8Q4vME"
     });
     Product.create({
       id:5,
@@ -85,7 +82,8 @@ function initial() {
       quantity: 1,
       brand: "STN",
       amount_in_package: 1000,
-      number_of_servings: 1000
+      number_of_servings: 1000,
+      img: url+"1G-W_tpHyICc2qNNeGTjNc-Mgq4bJCh3A"
     });
     Product.create({
       id:6,
@@ -96,7 +94,8 @@ function initial() {
       quantity: 1,
       brand: "STN",
       amount_in_package: 1000,
-      number_of_servings: 1000
+      number_of_servings: 1000,
+      img: url+"11vpojJ1MjVWBezAo46tsAR2_xu8ZsQwh."
     });
     Product.create({
       id:7,
@@ -107,7 +106,8 @@ function initial() {
       quantity: 1,
       brand: "STN",
       amount_in_package: 1000,
-      number_of_servings: 1000
+      number_of_servings: 1000,
+      img:url+"11vpojJ1MjVWBezAo46tsAR2_xu8ZsQwh"
     });
     Product.create({
       id:8,
@@ -118,7 +118,8 @@ function initial() {
       quantity: 1,
       brand: "STN",
       amount_in_package: 1000,
-      number_of_servings: 1000
+      number_of_servings: 1000,
+      img: url+ "1E7bECDDehLEWVsSKSpn0lQxqell5x38"
     });
     Compound.create({
       id:1,

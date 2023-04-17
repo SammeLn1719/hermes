@@ -9,11 +9,11 @@ const Op = db.Sequelize.Op;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const { json } = require("sequelize");
-function JWT(user){  
-    var token = jwt.sign({ id: user.id,email: user.email,password:user.password }, config.secret, {
-      expiresIn: 86400 // 24 hours
-    });  
-    return token;
+function JWT(user) {
+  var token = jwt.sign({ id: user.id, email: user.email, password: user.password }, config.secret, {
+    expiresIn: 86400 // 24 hours
+  });
+  return token;
 }
 
 
@@ -22,32 +22,11 @@ exports.signup = (req, res) => {
   user.create({
     username: req.body.username,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 5)
-  })
-    .then(user => {
-      if (req.body.roles) {
-        Role.findAll({
-          where: {
-            name: {
-              [Op.or]: req.body.roles
-            }
-          }
-        }).then(roles => {
-          user.setRoles(roles).then(() => { 
-            res.send(JWT(user));
-          });
-        });
-      } else {
-        // user role = 1
-        user.setRoles([1]).then(() => {      
-          res.send(JWT(user));
-        });
-      }
-    })
-    .catch(err => {
-      res.status(500).send({ message: err.message });
-    });
-};
+    password: bcrypt.hashSync(req.body.password, 5),
+    role: req.body.role
+  }).then(
+  res.send(JWT(user))
+)};
 
 exports.signin = (req, res) => {
   user.findOne({
@@ -55,7 +34,7 @@ exports.signin = (req, res) => {
       email: req.body.email
     }
   })
-    .then(user => {
+    (user => {
       if (!user) {
         return res.status(404).send({ message: "user Not found." });
       }
@@ -71,7 +50,7 @@ exports.signin = (req, res) => {
           message: "Invalid Password!"
         });
       }
-      
+
       var token = JWT(user)
 
       var authorities = [];
@@ -93,6 +72,6 @@ exports.signin = (req, res) => {
     });
 };
 
-exports.check = (req, res,next) => {
+exports.check = (req, res, next) => {
   res.send(JWT(req.user))
 };

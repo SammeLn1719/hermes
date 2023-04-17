@@ -24,6 +24,18 @@ module.exports = (sequelize, Sequelize) => {
       number_of_servings:{
         type: Sequelize.INTEGER
       },
+      number_in_servings:{
+        type: Sequelize.INTEGER
+      },
+      barcode: {
+        type: Sequelize.STRING
+      },
+      discounts: {
+        type: Sequelize.INTEGER
+      },
+      img: {
+        type: Sequelize.STRING
+      },
     });
   
     return Product;
