@@ -20,7 +20,7 @@ const ProductList = observer(() => {
  
     const navigate = useNavigate()
     return <div className={style.BrandBar}>
-                 {/* {fetchProduct.prototype.forEach((store:any) =>
+                 {store.map((store:any) =>
                     //<DeviceItem key={store.id} store={store}/>
                     <div className={style.BrandBar} onClick={() => navigate(PRODUCT_ROUTER + '/' + store.id)}>
                     <ul key={store.id} >
@@ -30,7 +30,7 @@ const ProductList = observer(() => {
                             <li>{store.rating}</li> 
                         </ul>
                      </div> 
-                 )}   */}
+                 )}   
         </div>
 })
 
