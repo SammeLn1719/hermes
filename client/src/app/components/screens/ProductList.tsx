@@ -12,26 +12,22 @@ import style from './../../assets/styles/standard.module.scss'
 import DeviceItem from './ProductItem';
 
 
-const ProductList = observer(() => {
+const ProductList = () => {
     
-    const {store} = useContext(Context)
+    const store = useContext(Context)
     console.log(store)
     
+
  
     const navigate = useNavigate()
     return <div className={style.BrandBar}>
-                 {store.map((store:any) =>
-                    //<DeviceItem key={store.id} store={store}/>
-                    <div className={style.BrandBar} onClick={() => navigate(PRODUCT_ROUTER + '/' + store.id)}>
-                    <ul key={store.id} >
-                            <img width="200px" src={store.img} alt={store.name} />
-                            <li>{store.name}</li>
-                            <li>{store.price}</li>
-                            <li>{store.rating}</li> 
-                        </ul>
-                     </div> 
-                 )}   
+                 {store.store._products.map((store:ProductsResponse) =>
+                <div>{store.id}<div>{store.name}</div>
+                <img src={store.img} alt="" />
+          </div>
+      )}
+                 
         </div>
-})
+}
 
 export default ProductList;
