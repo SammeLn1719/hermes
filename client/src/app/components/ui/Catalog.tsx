@@ -11,11 +11,11 @@ import { fetchBrands, fetchProduct, fetchTypes } from "../../../http/productAPI.
 
 const Catalog: FC = observer(() => {
     const {store} = useContext(Context) 
-     useEffect(()=>{
-         fetchTypes().then(data => store.setTypes(data))
-         fetchBrands().then(data => store.setBrands(data))
-         fetchProduct().then(data => store.setProducts(data.rows))
-     }, [])
+    //  useEffect(()=>{
+    //     //  fetchTypes().then(data => store.setTypes(data))
+    //     //  fetchBrands().then(data => store.setBrands(data))
+    //      fetchProduct().then(data => store.setProducts(data.toRow))
+    //  }, [])
 
     return<div className={styleCatalog.wrapperFaceCatalog}>
             <div className={styleCatalog.TypeBar}><TypeBar/></div>
