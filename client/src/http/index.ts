@@ -20,9 +20,9 @@ export default $api;
 //end new token
 
 
-// const $authHost = axios.create({
-//     baseURL: process.env.REACT_APP_API_URL
-// })
+const $authHost = axios.create({
+    baseURL: process.env.REACT_APP_API_URL
+})
 
 // const authInterceptor = config => {
 //     config.headers.authorization = `${localStorage.getItem('token')}`
@@ -31,7 +31,7 @@ export default $api;
 
 // $authHost.interceptors.request.use(authInterceptor)
 
-// export {
-//     $host,
-//     $authHost
-// }
+export {
+    $host,
+    $authHost
+}

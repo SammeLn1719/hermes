@@ -1,8 +1,8 @@
+import { log } from 'console';
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import UserStore from './app/hooks/UseStore';
-import Store from './app/hooks/Store';
+import Store from './utils/Store';
 import userStore from './utils/userStore';
 
 //new token 
@@ -17,6 +17,8 @@ export const Context = createContext<State>({
     useStore,
     store,
 })
+console.log(store)
+console.log(process.env.REACT_APP_API_URL)
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

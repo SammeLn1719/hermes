@@ -11,9 +11,9 @@ const BrandBar = observer(() => {
    
     
     return <>
-                {store.brands.map((brand:any) =>
+                {/* {store.brands.map((brand:any) =>
                         <div className={style.BrandBarItem}>{brand.name}</div>
-                        )}
+                        )} */}
         </>
 })
 
