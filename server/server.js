@@ -21,6 +21,8 @@ const Brand = db.brand; //для проверки
 const Type = db.type; //для проверки
 const User = db.user; //для проверки
 const Basket = db.basket;
+const History = db.history;
+const Review = db.review;
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Db');
   initial();
@@ -252,6 +254,34 @@ function initial() {
       quantity:1,
       userId:1,
       productId:5,
+    });
+    History.create({
+      id:1,
+      quantity:1,
+      userId:1,
+      productId:5,
+      cost:5,
+    });
+    History.create({
+      id:2,
+      quantity:1,
+      userId:1,
+      productId:5,
+      cost:10,
+    });
+    Review.create({
+      id:1,
+      productId:1,
+      userId:1,
+      maek:4,
+      text:"Не плохо, есть можно",
+    });
+    Review.create({
+      id:2,
+      productId:1,
+      userId:1,
+      maek:4,
+      text:"Плохо, есть можно",
     });
 }
 require('./app/routes/auth.routes')(app);
