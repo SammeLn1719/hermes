@@ -17,10 +17,9 @@ const Catalog: FC = observer(() => {
     //      fetchProduct().then(data => store.setProducts(data.toRow))
     //  }, [])
 
-    return<div className={styleCatalog.wrapperFaceCatalog}>
-            <div className={styleCatalog.TypeBar}><TypeBar/></div>
-            {/* <div className={styleCatalog.BrandBar}><BrandBar/></div> */}
-            <div className={styleCatalog.ProductList}><ProductList/></div>
+    return<div className="flex mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+            <TypeBar/>
+            <ProductList/>
         </div>
 })
 
