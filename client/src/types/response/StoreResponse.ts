@@ -19,6 +19,7 @@ export interface ProductsResponse{
     type: string;
     quantity:number;
     brand: string;
+    img:string;
     amount_in_package: number;
     number_of_servings: number;
     createdAt: string;
