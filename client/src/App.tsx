@@ -1,27 +1,32 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import { Context } from '.';
 import style from './app/assets/styles/standard.module.scss'
 import AppRouter from './app/components/ui/AppRouter';
-import { check } from './http/userAPI';
+import { fetchProduct } from './http/productAPI';
+
 import "./index.css"
 
 
-const App = (() => {
-  const {user} = useContext(Context)
-  const [loading, setLoading] = useState(true) 
+const App:FC = observer(() => {
+  const {useStore} = useContext(Context)
+  // const [loading, setLoading] = useState(true) 
 
-  useEffect(() => {
-    check().then(data =>{
-      user.setUser(true)
-      user.setISAuth(true)
-    }).finally(()=> setLoading(false))
-  }, [])
+  // useEffect(() => {
+  //   if(localStorage.getItem('token'))
+  //     useStore.checkAuth()
+  // }, [])
 
+  // fetchProduct()
+  
+  // if(useStore.isLoading){
+  //   return<div> ЗАГРУЗКА...</div>
+  // }
+ 
   return <section className={style.wrapper}>
     <BrowserRouter>
       <AppRouter/>
-      
     </BrowserRouter>
   </section>;
 })

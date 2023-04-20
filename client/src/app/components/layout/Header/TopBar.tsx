@@ -1,22 +1,17 @@
 import React, { FC, useContext } from 'react';
 import logo from './../../../assets/image/logo.png';
-import style from './../Layout.module.scss';
+
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Context } from '../../../../index';
 import { observer } from 'mobx-react-lite';
-import { ADMIN_ROUTER, LOGIN_ROUTER } from '../../utils/consts';
+import { ADMIN_ROUTER, LOGIN_ROUTER } from '../../../../utils/consts';
 import "./../../../../index.css"
 
 
 const TopBar: FC = observer(() => {
-  const {user} = useContext(Context)
+  const {useStore} = useContext(Context)
   const navigate = useNavigate()
 
-  const logOut = () =>{
-    user.setUser({})
-    user.setIsAuth(false)
-  }
-  {/*className={style.topBar}*/}
   return <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center">
@@ -48,22 +43,20 @@ const TopBar: FC = observer(() => {
                 <input type="text" id="search-navbar" className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..."/>
             </div>
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                <li>
-                <Link to="/" className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Главная</Link>
-                </li>
-                <li>
-                <Link to="/catalog" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Каталог</Link>
-                </li>
-                <li>
-                <Link to="/about" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">О нас</Link>
-                </li>
-                    {user.isAuth ? 
+                    {[
+                        ['Главная', '/'],
+                        ['Каталог', '/catalog'],
+                        ['Reports', '/reports'],
+                        ].map(([title, url]) => (
+                            <Link to={url} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">{title}</Link>
+                        ))}
+                    {useStore.isAuth ? 
                                 <div>
                                 <li>
                                     <button className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" onClick={() => navigate(ADMIN_ROUTER)}>Админ панель</button>
                                 </li>
                                 <li>
-                                    <button className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" onClick={() => logOut()}>Выйти</button>
+                                    <button className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" onClick={() => useStore.logout()}>Выйти</button>
                                 </li>
                                 </div>
                                 :
@@ -74,29 +67,7 @@ const TopBar: FC = observer(() => {
                 </ul>
             </div>
         </div>
-        </nav>
-
-       
-
-       {/*<NavLink className={style.topBar_left} to="/"><img className={style.logo} src={logo} alt="logo" /><h1>HERMES</h1></NavLink>
-          <nav>
-            <Link to="/catalog">Каталог</Link>
-            {user.isAuth ?
-                    <div >
-                        <button onClick={() => navigate(ADMIN_ROUTER)}>
-                            Админ панель
-                        </button>
-                        <button onClick={() => logOut()}>
-                            Выйти
-                        </button>
-                    </div>
-                    :
-                    <div>
-                        <button onClick={() => navigate(LOGIN_ROUTER)}>Авторизация</button>
-                    </div>
-                }
-          </nav>
-            <div className={style.topBar_right}>+375(29)737-66-00</div> */}
+    </nav>
 })
 
 export default TopBar;

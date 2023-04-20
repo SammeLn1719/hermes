@@ -1,36 +1,24 @@
 
 import { observer } from 'mobx-react-lite';
-import { FC, useContext } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import { Context } from './../../../index'
 
 import style from './../../assets/styles/standard.module.scss'
-
-
-interface ListItem{
-    children: string | JSX.Element | JSX.Element[];
-}
-const ListItem: FC<any> = observer(({children}) =>{
-    return<div className={style.TypeBarItem}>
-        {children}
-    </div>
-})
+import { createType } from '../../../http/productAPI';
+import { log } from 'console';
+import { ProductsResponse } from '../../../types/response/StoreResponse';
 
 
 const TypeBar = observer(() => {
     const {store} =  useContext(Context)
-    console.log(store.selectedType.id)
-    
-    return <>
-                {store.types.map((type:any) =>
-                    <ListItem
-                    active={type.id === store.selectedType.id}
-                    onClick={() => store.setSelectedType(type)}
-                    key={type.id} 
-                    > 
-                        <div className={style.ListItem}>{type.name} {type.id}</div>
-                    </ListItem>
+    console.log(store)
+    return <ul >
+                {store._products.map((store:ProductsResponse) =>
+                    <li className="w-40 p-3 mr-6 border" >
+                        {store.type}
+                    </li>
                     )}
-        </>
+        </ul> 
 })
 
 export default TypeBar;

@@ -8,14 +8,12 @@ import style from './../../assets/styles/standard.module.scss'
 import { Context } from './../../../index';
 
 const AppRouter = () => {
-    const {user} = useContext(Context)
-
-
-    console.log(user)
+    const {useStore} = useContext(Context)
+    
     return <Layout>
         <section className={style.Main}>
             <Routes>
-                {user.isAuth && authRouts.map(({path, Component: Component})=>
+                {useStore.isAuth && authRouts.map(({path, Component: Component})=>
                     <Route key={path} path={path} element={<Component/>} />
                 )}
                 {publicRouts.map(({path, Component: Component})=>
