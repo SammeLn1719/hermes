@@ -16,7 +16,6 @@ function JWT(user) {
   return token;
 }
 
-
 exports.signup = (req, res) => {
   // Save user to Database
   user.create({
@@ -25,8 +24,9 @@ exports.signup = (req, res) => {
     password: bcrypt.hashSync(req.body.password, 5),
     role: req.body.role
   }).then(
-  res.send(JWT(user))
-)};
+    res.send(JWT(user))
+  )
+};
 
 exports.signin = (req, res) => {
   user.findOne({

@@ -1,5 +1,7 @@
 const { authJwt } = require("../middleware");
-const controller = require("../controllers/user.controller");
+const product = require("../controllers/product.controller");
+const user = require("../controllers/user.controller");
+const sample = require("../controllers/sample.controller");
 
 module.exports = function (app) {
   app.use(function (req, res, next) {
@@ -10,11 +12,18 @@ module.exports = function (app) {
     next();
   });
 
-  app.get("/api/product/all", controller.all);
-  app.get("/api/product/brand", controller.brand);
-  app.get("/api/product/type", controller.type);
-  app.get("/api/product/name", controller.name);
+  app.get("/api/product/all", product.all);
+  app.get("/api/product/brand", product.brand);
+  app.get("/api/product/type", product.type);
+  app.get("/api/product/id", product.id);
 
+
+  app.get("/api/user/basket", user.basket);
+  app.get("/api/user/history", user.history);
+
+  
+  app.get("/api/types", sample.type);
+  app.get("/api/brands", sample.brand);
   /*
   "/api/test/user",
   [authJwt.verifyToken],

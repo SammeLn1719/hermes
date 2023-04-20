@@ -14,17 +14,41 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 const db = require("./app/models");
-const Role = db.role;
 const url = "https://drive.google.com/uc?export=view&id=";
 const Product = db.product; //для проверки
 const Compound = db.compound; //для проверки
-
+const Brand = db.brand; //для проверки
+const Type = db.type; //для проверки
+const User = db.user; //для проверки
+const Basket = db.basket;
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Db');
   initial();
 });
 function initial() {
-    
+  User.create({
+    id: 1,
+    username: "misha.panteleev@inbox.ru",
+    role: "ADMIN",
+    email: "misha.panteleev@inbox.ru",
+    password: "1234"
+  });
+  Brand.create({  
+    id:1,  
+    name:"Rex",
+  });
+  Brand.create({    
+    id:2,  
+    name:"STN",
+  });
+  Type.create({  
+    id:1,  
+    name:"снеки",
+  });
+  Type.create({    
+    id:2,  
+    name:"Л-Карнитин",
+  });
     Product.create({
       id:1,
       name:"Печенье ProteinRex с высоким содержанием протеина «Кокосовое»",       
@@ -95,7 +119,7 @@ function initial() {
       brand: "STN",
       amount_in_package: 1000,
       number_of_servings: 1000,
-      img: url+"11vpojJ1MjVWBezAo46tsAR2_xu8ZsQwh."
+      img: url+"1QDHbezB1l6dQ89gQdB3-zd5hFDhW76HV"
     });
     Product.create({
       id:7,
@@ -119,7 +143,7 @@ function initial() {
       brand: "STN",
       amount_in_package: 1000,
       number_of_servings: 1000,
-      img: url+ "1E7bECDDehLEWVsSKSpn0lQxqell5x38"
+      img: url+ "1E7bECDDehLEWVsSKSpn0lQxqell5x38L"
     });
     Compound.create({
       id:1,
@@ -204,6 +228,30 @@ function initial() {
       quantity: 1000,
       dimension:"мл",
       productId: 8
+    });
+    Basket.create({
+      id:1,
+      quantity:1,
+      userId:1,
+      productId:1,
+    });
+    Basket.create({
+      id:2,
+      quantity:1,
+      userId:1,
+      productId:2,
+    });
+    Basket.create({
+      id:3,
+      quantity:1,
+      userId:1,
+      productId:4,
+    });
+    Basket.create({
+      id:4,
+      quantity:1,
+      userId:1,
+      productId:5,
     });
 }
 require('./app/routes/auth.routes')(app);
