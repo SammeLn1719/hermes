@@ -16,7 +16,7 @@ exports.all = (req, res) => {
 exports.id = (req, res) => {
     Product.findAll({
         where: {
-            id: req.body.id,
+            id: req.param('id')
         }, include: [{
             model: Compound
         }],
@@ -76,5 +76,14 @@ exports.blog = (req, res) => {
         }
     }).then(blog => {
         res.send(blog);
+    }).catch(err => console.log(err));
+};
+exports.compound = (req, res) => {
+    Compound.findAll({
+        where: {
+            productId: req.param('id')
+        }
+    }).then(products => {
+        res.send(products);
     }).catch(err => console.log(err));
 };
