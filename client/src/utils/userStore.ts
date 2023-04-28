@@ -18,7 +18,7 @@ export default class userStore{
         this.isAuth = bool;
     }
     setUser(user:IUser){
-        this.user = user;
+        this.user.id = '2';
     }
     setLoading(bool:boolean){
         this.isLoading = bool
@@ -29,16 +29,17 @@ export default class userStore{
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
             this.setUser(response.data.user)
+            
         }catch(e:any){
             console.log(e.response?.data?.message);
         }
     }
     async registration(email: string, password:string){
         try{
-            const response = await AuthService.registration(email, password);
+            var response = await AuthService.registration(email, password);
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
-            this.setUser(response.data.user)
+            this.setUser(response.data.user)   
         }catch(e:any){
             console.log(e.response?.data?.message);
         }

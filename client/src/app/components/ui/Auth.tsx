@@ -8,7 +8,6 @@ import { LOGIN_ROUTER, REGISTRATION_ROUTER, SHOP_ROUTER,CATALOG_ROUTE } from "..
 
 
 
-
 const Auth:FC = observer(() => {
     const {useStore} = useContext(Context)
     const[email, setEmail] = useState<string>('')
@@ -73,9 +72,11 @@ const Auth:FC = observer(() => {
              }else{
                 data = await useStore.registration(email, password)
              }
-             //useStore.setUser()
+             //useStore.setUser(data)
+             alert(12321321421414124214214)
              useStore.setAuth(true)
              navigate(CATALOG_ROUTE, { replace: true })
+             console.log(document.cookie)
          }catch(e:any){
              console.log(4)
         }
