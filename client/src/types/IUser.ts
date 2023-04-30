@@ -1,5 +1,6 @@
-export interface IUser {
+export interface IUser {    
+    accessToken: string;    
+    id: number;
     email: string;
     isActivated: boolean;
-    id: string;
 }

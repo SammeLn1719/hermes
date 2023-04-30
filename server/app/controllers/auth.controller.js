@@ -37,7 +37,9 @@ exports.signup = (req, res) => {
       }),
       res.status(200).send({
         accessToken: JWT(user, 86400),
-        user: user.id,
+        id: user.id,
+        email: user.email,
+        isActivated: true
       })
   })
 };
