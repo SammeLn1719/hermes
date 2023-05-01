@@ -24,11 +24,15 @@ function JWT(user, time) {
 
 exports.signup = (req, res) => {
   // Save user to Database
+  
+  console.log('1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1')
   user.create({
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 5),
     role: req.body.role,
   }).then(user => {
+    
+  console.log('2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1')
     refresh_token = JWT(user, 86400),
       res.cookie('jwt', refresh_token, {
         httpOnly: true,
@@ -40,7 +44,10 @@ exports.signup = (req, res) => {
         id: user.id,
         email: user.email,
         isActivated: true
+        
       })
+      
+  console.log('3!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1')
   })
 };
 

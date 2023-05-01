@@ -80,16 +80,16 @@ const Auth: FC = observer(() => {
                 )
 
             } else {
-                await useStore.registration(email, password).then((value) => {
-                    if (value) {
-                        alert("registration success")
-                        useStore.setAuth(true)
-                    } else {
-                        alert("registration field")
-                        useStore.setAuth(false)
-                    }
+                const value = await useStore.registration(email, password)
+                alert(value)
+                if (!value) {
+                    alert("registration field")
+                    useStore.setAuth(false)
+                } else {
+                    alert("registration success")
+                    useStore.setAuth(true)
+                    
                 }
-                )
             }
         } catch (e: any) {
             console.log(4)
@@ -97,14 +97,19 @@ const Auth: FC = observer(() => {
 
         return useStore.isAuth
     }
-    const click = async () => {
-        await bigPenis().then(() => {
+    function click() {
+        alert('проходит регистрация')
+        bigPenis().then()  
+    }
+    /*const click = async ())=> {
+         bigPenis() 
+         navigate(CATALOG_ROUTE)
             if (useStore.isAuth == true) {
                 alert("good")
-                navigate(CATALOG_ROUTE)
             }
-        })
+        
     }
+    }*/
 
     return <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring ring-2 ring-blue-600 lg:max-w-xl"><form>
         <h1 className="text-3xl font-semibold text-blue-800 text-center underline uppercase ">{isLogin ? 'Авторизация' : 'Регистрация'}</h1>
