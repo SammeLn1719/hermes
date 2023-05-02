@@ -11,15 +11,16 @@ import { fetchBrands, fetchProduct, fetchTypes } from "../../../http/productAPI.
 
 const Catalog: FC = observer(() => {
     const {store} = useContext(Context) 
-    //  useEffect(()=>{
+    //   useEffect(()=>{
     //     //  fetchTypes().then(data => store.setTypes(data))
-    //     //  fetchBrands().then(data => store.setBrands(data))
+    //      //  fetchBrands().then(data => store.setBrands(data))
     //      fetchProduct().then(data => store.setProducts(data.toRow))
     //  }, [])
-
+ 
     return<div className="flex mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <TypeBar/>
-            <ProductList/>
+            <div><BrandBar/>
+            <ProductList/></div>
         </div>
 })
 

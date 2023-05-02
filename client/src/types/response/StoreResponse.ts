@@ -4,11 +4,17 @@ import { ICharacteristic } from "../ICharacteristic";
 export interface TypesResponse {
     id: number;
     name: string;
+    img:string;
+    createdAt: string;
+    updatedAt: string;
 }
 
 export interface BrandsResponse {
     id: number;
     name: string;
+    img:string;
+    createdAt: string;
+    updatedAt: string;
 }
 
 export interface ProductsResponse{
@@ -28,3 +34,12 @@ export interface ProductsResponse{
 
 }
 
+export interface characteristicsResponse{
+        id: number,
+        name: string,
+        quantity: number,
+        dimension: string,
+        createdAt: string,
+        updatedAt: string,
+        productId: number
+}

@@ -15,6 +15,7 @@ module.exports = function (app) {
 
   app.get("/api/product/all", product.all);
   app.get("/api/product/id", product.id);//передавать в теле id товара
+  app.get("/api/compound/id", product.compound);//передавать в теле id товара
   app.get("/api/product/review", product.review);//передавать в теле id товара
   
   app.get("/api/types", sample.type);

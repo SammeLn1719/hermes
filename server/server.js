@@ -38,18 +38,22 @@ function initial() {
   Brand.create({  
     id:1,  
     name:"Rex",
+    img:url+"1FRn87iMuMX1fvkvtPyEZqOiJK-s9Rz4u"
   });
   Brand.create({    
     id:2,  
     name:"STN",
+    img: url+"1E7bECDDehLEWVsSKSpn0lQxqell5x38L"
   });
   Type.create({  
     id:1,  
     name:"снеки",
+    img:url+"1FRn87iMuMX1fvkvtPyEZqOiJK-s9Rz4u"
   });
   Type.create({    
     id:2,  
     name:"Л-Карнитин",
+    img: url+"1E7bECDDehLEWVsSKSpn0lQxqell5x38L"
   });
     Product.create({
       id:1,

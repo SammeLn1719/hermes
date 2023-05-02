@@ -1,15 +1,15 @@
 import { AxiosResponse } from "axios";
-import $api from "../http";
-import { AuthResponse } from "../types/response/AuthResponse";
+import  $host from "../http";
+import { IUser } from "../types/IUser";
 
 export default class AuthService{
-    static async login(email:string, password: string):Promise<AxiosResponse<AuthResponse>>{
-        return $api.post<AuthResponse>('/login', {email, password})
+    static async login(email:string, password: string):Promise<AxiosResponse<IUser>>{
+        return $host.post<IUser>('/api/auth/signin', {email, password})
     }
-    static async registration(email:string, password: string):Promise<AxiosResponse<AuthResponse>>{
-        return $api.post<AuthResponse>('/registration', {email, password})
+    static async registration(email:string, password: string)/*:Promise<AxiosResponse<IUser>>*/{
+        return $host.post('api/auth/signup', {email, password,role:'admin'})
     }
     static async logout():Promise<void>{
-        return $api.post('/logout')
+        return $host.post('/logout')
     }
 }

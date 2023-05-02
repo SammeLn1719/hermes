@@ -31,8 +31,13 @@ export const fetchProduct = async () => {
     const {data} = await $host.get('api/product/all', {})
     return data
 }
+export const fetchСharacteristics = async (id) => {
+    const {data} = await $host.get('api/compound/id?id=' + id)
+    return data
+}
 
-export const fetchOneDevice = async (id) => {
-    const {data} = await $host.get('api/device/' + id)
+
+export const fetchOneProduct = async (id) => {
+    const {data} = await $host.get('api/product/id?id=' + id)
     return data
 }

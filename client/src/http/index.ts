@@ -7,8 +7,7 @@ const $host = axios.create({
 //new token auth
 export const API_URL = `http://localhost:8080/api`
 const $api = axios.create({
-    withCredentials: true, 
-    baseURL:API_URL
+    baseURL: process.env.REACT_APP_API_URL
 })
 
 $api.interceptors.request.use((config)=>{
