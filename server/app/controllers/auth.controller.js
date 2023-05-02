@@ -7,7 +7,7 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const { json } = require("sequelize");
 function JWT(user) {
-  var token = jwt.sign({ id: user.id, email: user.email, password: user.password }, config.secret, {
+  var token = jwt.sign({ id: user.id, username: user.username}, config.secret, {
     expiresIn: 86400 // 24 hours
   });
   return token;
