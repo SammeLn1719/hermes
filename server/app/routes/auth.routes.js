@@ -20,7 +20,7 @@ module.exports = function(app) {
     controller.signup
   );
 
-  app.post("/api/auth/refresh",controller.refresh);
+  //app.post("/api/auth/refresh",controller.refresh);
   app.post("/api/auth/signin", controller.signin);
   app.get("/api/auth/check",authJWT.verifyToken, controller.check);
 };

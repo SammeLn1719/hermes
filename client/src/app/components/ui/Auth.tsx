@@ -28,7 +28,6 @@ const Auth: FC = observer(() => {
             setFormValid(true)
         }
     }, [emailError, passwordError])
-
     const emailHandler = (e: any) => {
         setEmail(e.target.value)
         const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -62,18 +61,18 @@ const Auth: FC = observer(() => {
         }
     }
 
-    const location = useLocation()
     const navigate = useNavigate()
+    const location = useLocation()
     const isLogin = location.pathname === LOGIN_ROUTER
     async function bigPenis() {
         try {
             if (isLogin) {
                 useStore.login(email, password).then((value) => {
                     if (!value) {
-                        alert("login field")
+                        //alert("login field")
                         useStore.setAuth(false)
                     } else {
-                        alert("login success")
+                        //alert("login success")
                         useStore.setAuth(true)
                     }
                 }
@@ -81,37 +80,38 @@ const Auth: FC = observer(() => {
 
             } else {
                 const value = await useStore.registration(email, password)
-                alert(value)
+                //alert(value)
                 if (!value) {
-                    alert("registration field")
+                    //alert("registration field")
                     useStore.setAuth(false)
                 } else {
-                    alert("registration success")
+                    //alert("registration success")
                     useStore.setAuth(true)
-                    
+
                 }
             }
         } catch (e: any) {
             console.log(4)
         }
-
         return useStore.isAuth
     }
-    function click() {
-        alert('проходит регистрация')
-        bigPenis().then()  
+    const click = (e: any) => {
+        e.preventDefault();
+        bigPenis().then(() => {
+            if (useStore.isAuth)
+                navigate(CATALOG_ROUTE)
+            return true
+        }
+        )
     }
     /*const click = async ())=> {
          bigPenis() 
-         navigate(CATALOG_ROUTE)
-            if (useStore.isAuth == true) {
-                alert("good")
-            }
+         
         
     }
     }*/
 
-    return <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring ring-2 ring-blue-600 lg:max-w-xl"><form>
+    return <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring ring-2 ring-blue-600 lg:max-w-xl"><form onSubmit={e => click(e)}>
         <h1 className="text-3xl font-semibold text-blue-800 text-center underline uppercase ">{isLogin ? 'Авторизация' : 'Регистрация'}</h1>
         <p className="font-medium text-blue-800 hover:underline">Почта:</p>
         <p>{(emailDirty && emailError) && <div className="text-red-800">{emailError}</div>}</p>
@@ -120,7 +120,7 @@ const Auth: FC = observer(() => {
         {(passwordDirty && passwordError) && <div className="text-red-800">{passwordError}</div>}
         <input className="block w-full px-4 py-2 mt-2 text-blue-800 bg-white border rounded-md focus:border-blue-700 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40" onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} name="password" type="password" placeholder="Enter your password..." />
         <NavLink to="#" className="text-xs text-blue-800 hover:underline">Забыть пароль?</NavLink>
-        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-800 rounded-md hover:bg-blue-800 focus:outline-none focus:bg-blue-600" disabled={!formValid} onClick={click} type="submit">{isLogin ? 'Войти' : 'Регистрация'}</button>
+        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-800 rounded-md hover:bg-blue-800 focus:outline-none focus:bg-blue-600" disabled={!formValid} type="submit">{isLogin ? 'Войти' : 'Регистрация'}</button>
         <p className="mt-8 text-xs font-light text-center text-gray-700">
             У вас нет аккаунта?{" "}
             {isLogin ?
