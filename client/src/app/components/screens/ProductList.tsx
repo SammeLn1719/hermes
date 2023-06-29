@@ -13,9 +13,9 @@ const ProductList = observer(() => {
     const store = useContext(Context)
  
     const navigate = useNavigate()
-    return <div className="flex flex-wrap"  >
+    return <div className="grid grid-cols-3 gap-2"  >
                  {store.store._products.map((store:ProductsResponse) =>
-                  <div className="flex mr-6 mb-6 rounded-lg shadow-lg scale-100 w-80 h-80 border flex-col cursor-pointer" key={store.id} onClick={()=> navigate(PRODUCT_ROUTER + '/' + store.id)}>
+                  <div className="flex rounded-lg shadow-lg scale-100 w-full h-auto border flex-col cursor-pointer" key={store.id} onClick={()=> navigate(PRODUCT_ROUTER + '/' + store.id)}>
                     <div className="flex w-full h-56 justify-center items-center border-b-2 "><img className="max-w-48 max-h-48"  src={store.img} alt={store.name} /></div>
                     <span className="text-center">{store.info}</span>
                       <div className='flex'>

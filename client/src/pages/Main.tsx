@@ -12,7 +12,7 @@ const Main = observer(() => {
     return <section > 
       <Header/>
       <TabCatalog/>
-      {/* <BrandSlider/> */}
+      <BrandSlider/>
     </section>;
 })
 

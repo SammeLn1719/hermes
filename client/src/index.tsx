@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import Store from './utils/Store';
 import userStore from './utils/userStore';
+import { ThemeProvider } from "@material-tailwind/react";
 import './app/assets/styles/standard.module.scss'
 //new token 
 interface State{
@@ -29,6 +30,8 @@ root.render(
       useStore,
       store
   }}>
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
   </Context.Provider>
 );
