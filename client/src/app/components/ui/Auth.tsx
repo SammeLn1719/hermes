@@ -15,7 +15,7 @@ const Auth: FC = observer(() => {
     const [password, setPassword] = useState<string>('')
     const [emailDirty, setEmailDirty] = useState<boolean>(false)
     const [passwordDirty, setPasswordDirty] = useState<boolean>(false)
-    const [emailError, setEmailError] = useState<string>('Емейл не может быть рустым')
+    const [emailError, setEmailError] = useState<string>('Емейл не может быть пустым')
     const [passwordError, setPasswordError] = useState<string>('Пароль не может быть пустым')
     const [formValid, setFormValid] = useState<boolean>(false)
 
